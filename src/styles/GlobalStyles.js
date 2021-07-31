@@ -24,4 +24,12 @@ const Slogan = styled.div`
     }
 `
 
-export { Container, Slogan };
+const Area = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+` 
+
+export { Container, Slogan, Area };

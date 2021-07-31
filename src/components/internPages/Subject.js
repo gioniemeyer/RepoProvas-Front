@@ -1,19 +1,21 @@
 import styled from "styled-components";
 import axios from "axios";
 
-export default function Course({course, setSubjects, subjects}) {
+export default function Course({subject}) {
 
-    const {id, Name} = course;  
-    function chooseCourse(id) {
+    const {id, Name} = subject.subjects;  
+    function chooseSubject(id) {
+        console.log(id);
         const body = {id}
         const request = axios.post(`${process.env.REACT_APP_API_BASE_URL}/filter-subjects`, body)
-        request.then(res => {
-            setSubjects(res.data);
-        })
+        // request.then(res => {
+        //     setSubjects(res.data);
+        // })
+        request.then(() => console.log("chamar profs"))
     }
 
     return(
-        <Button type="button" onClick={() => chooseCourse(id)}>
+        <Button type="button" onClick={() => chooseSubject(id)}>
             <strong>{Name}</strong>
         </Button>
     )
