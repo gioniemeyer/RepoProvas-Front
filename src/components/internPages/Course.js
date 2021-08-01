@@ -1,15 +1,13 @@
 import styled from "styled-components";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-export default function Course({course, setSubjects, subjects}) {
+export default function Course({course}) {
+    let history = useHistory();
 
     const {id, Name} = course;  
     function chooseCourse(id) {
-        const body = {id}
-        const request = axios.post(`${process.env.REACT_APP_API_BASE_URL}/filter-subjects`, body)
-        request.then(res => {
-            setSubjects(res.data);
-        })
+            history.push(`/enviar-teste/${id}`)
     }
 
     return(

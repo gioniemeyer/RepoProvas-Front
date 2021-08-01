@@ -1,28 +1,41 @@
 import styled from "styled-components";
 import axios from "axios";
+import { useState } from "react";
 
-export default function Course({subject}) {
-
+export default function Subject({subject, professors, setProfessors}) {
+    const [chosen, setChosen] = useState(false);
     const {id, Name} = subject.subjects;  
+
     function chooseSubject(id) {
-        console.log(id);
+        if(chosen === true) {
+            setChosen(false);
+            setProfessors([])
+            return
+        };
+
+        if(professors.length !== 0) {
+            alert('Só é possível subir o teste de uma disciplina por vez')
+            return
+        }
+        
         const body = {id}
-        const request = axios.post(`${process.env.REACT_APP_API_BASE_URL}/filter-subjects`, body)
-        // request.then(res => {
-        //     setSubjects(res.data);
-        // })
-        request.then(() => console.log("chamar profs"))
+        
+        const request = axios.post(`${process.env.REACT_APP_API_BASE_URL}/filter-professors`, body)
+        request.then(res => {
+            setChosen(true)
+            setProfessors(res.data)
+        })
     }
 
     return(
-        <Button type="button" onClick={() => chooseSubject(id)}>
+        <Button chosen={chosen} type="button" onClick={() => chooseSubject(id)}>
             <strong>{Name}</strong>
         </Button>
     )
 }
 
 const Button = styled.button`
-    background-color: #555555;
+    background-color: ${props => props.chosen ? '#00739D' : '#555555' };
     border: none;
     height: 30px;
     width: fit-content;

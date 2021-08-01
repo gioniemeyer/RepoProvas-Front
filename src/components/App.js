@@ -7,6 +7,7 @@ import Homepage from './homepage/Homepage';
 import SendTest from './internPages/SendTest';
 import SearchCourse from './internPages/SearchCourse';
 import Header from './general/Header';
+import ChooseCourse from './internPages/ChooseCourse';
 
 function App() {
   return (
@@ -18,7 +19,11 @@ function App() {
             <Homepage />
           </Route>
 
-          <Route path="/enviar-teste" exact>
+          <Route path="/escolher-curso" exact>
+            <ChooseCourse />
+          </Route>
+
+          <Route path="/enviar-teste/:id" exact>
             <SendTest />
           </Route>
 

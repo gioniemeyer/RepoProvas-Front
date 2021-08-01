@@ -7,7 +7,7 @@ export default function Header() {
     return(
         <HeaderDiv>
             <p onClick={() => link.push('/')}>Início</p>
-            <p onClick={() => link.push('/enviar-teste')}>Enviar Prova</p>
+            <p onClick={() => link.push('/escolher-curso')}>Enviar Prova</p>
             <p onClick={() => link.push('/pesquisar-teste')}>Buscar no seu Curso</p>
         </HeaderDiv>
     )
