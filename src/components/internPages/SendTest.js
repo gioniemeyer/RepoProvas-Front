@@ -30,15 +30,15 @@ export default function SendTest() {
 
     function sendTest() {
         const body = {
-            courseId: id,
+            courseId: parseInt(id),
             subjectId: professors[0].subjectsId,
             professorId: chosenProfs,
-            categoryId: category,
+            category,
             pdfLink: link
         }
         const request = axios.post(`${process.env.REACT_APP_API_BASE_URL}/sendTest`, body);
-        request.then(res => {
-            console.log(res.data)
+        request.then(() => {
+            history.push('/');
         })
 
     }
@@ -46,7 +46,7 @@ export default function SendTest() {
     return(
         <Container>
             <SendForm onSubmit={sendTest}>
-                <SubjectArea subjects={subjects} professors={professors} setProfessors={setProfessors} />
+                <SubjectArea subjects={subjects} professors={professors} setProfessors={setProfessors} />                
                 {professors.length === 0 ? "" :
                 <>
                 <ProfessorArea professors={professors} chosenProfs={chosenProfs} setChosenProfs={setChosenProfs}/>
@@ -68,7 +68,7 @@ export default function SendTest() {
                     onChange={e => setLink(e.target.value)}
                 />
 
-                <SendButton type="submit">Envie o teste!</SendButton>
+                <SendButton disabled={!chosenProfs} type="submit">Envie o teste!</SendButton>
             </SendForm>
         </Container>
     )

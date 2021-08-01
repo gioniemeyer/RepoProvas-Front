@@ -1,6 +1,5 @@
 import { Area } from "../../styles/GlobalStyles";
 import Professor from "./Professor";
-import { useState } from "react";
 
 export default function ProfessorArea({professors, chosenProfs, setChosenProfs}) {
 

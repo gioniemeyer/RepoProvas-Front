@@ -11,16 +11,16 @@ import TenthPeriod from "./periods/SeventhPeriod";
 
 export default function SubjectArea({subjects, professors, setProfessors}) {
 
-    const firstPeriod = subjects.filter(subject => subject.subjects.semesterId === 1);
-    const secondPeriod = subjects.filter(subject => subject.subjects.semesterId === 2);
-    const thirdPeriod = subjects.filter(subject => subject.subjects.semesterId === 3);
-    const fourthPeriod = subjects.filter(subject => subject.subjects.semesterId === 4);
-    const fifthPeriod = subjects.filter(subject => subject.subjects.semesterId === 5);
-    const sixthPeriod = subjects.filter(subject => subject.subjects.semesterId === 6);
-    const seventhPeriod = subjects.filter(subject => subject.subjects.semesterId === 7);
-    const eighthPeriod = subjects.filter(subject => subject.subjects.semesterId === 8);
-    const ninthPeriod = subjects.filter(subject => subject.subjects.semesterId === 9);
-    const tenthPeriod = subjects.filter(subject => subject.subjects.semesterId === 10);
+    const firstPeriod = subjects.filter(subject => subject.subjects.semester === 1);
+    const secondPeriod = subjects.filter(subject => subject.subjects.semester === 2);
+    const thirdPeriod = subjects.filter(subject => subject.subjects.semester === 3);
+    const fourthPeriod = subjects.filter(subject => subject.subjects.semester === 4);
+    const fifthPeriod = subjects.filter(subject => subject.subjects.semester === 5);
+    const sixthPeriod = subjects.filter(subject => subject.subjects.semester === 6);
+    const seventhPeriod = subjects.filter(subject => subject.subjects.semester === 7);
+    const eighthPeriod = subjects.filter(subject => subject.subjects.semester === 8);
+    const ninthPeriod = subjects.filter(subject => subject.subjects.semester === 9);
+    const tenthPeriod = subjects.filter(subject => subject.subjects.semester === 10);
 
     return (
         <>
