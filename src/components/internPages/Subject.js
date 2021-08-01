@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import professorContext from "../../contexts/ProfessorsContext";
 
-export default function Subject({subject, professors, setProfessors}) {
+export default function Subject({subject}) {
+    const {professors, setProfessors} = useContext(professorContext);
     const [chosen, setChosen] = useState(false);
     const {id, Name} = subject.subjects;  
 

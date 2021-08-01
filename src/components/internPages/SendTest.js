@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {Container} from "../../styles/GlobalStyles"
 import { Form, RadioButtonGroup } from "grommet";
 import SubjectArea from "./SubjectArea";
 import ProfessorArea from "./ProfessorArea";
 import { useHistory, useParams } from "react-router-dom";
+import ProfessorContext from "../../contexts/ProfessorsContext";
 
 export default function SendTest() {
     let params = useParams();
@@ -13,10 +14,11 @@ export default function SendTest() {
     const id = params.id
 
     const [subjects, setSubjects] = useState([]);
-    const [professors, setProfessors] = useState([]);
     const [link, setLink] = useState('');
     const [chosenProfs, setChosenProfs] = useState(undefined)
     const [category, setCategory] = useState('');
+
+    const {professors, setProfessors} = useContext(ProfessorContext)
 
     function chooseCourse() {
         const body = {id}
@@ -46,7 +48,7 @@ export default function SendTest() {
     return(
         <Container>
             <SendForm onSubmit={sendTest}>
-                <SubjectArea subjects={subjects} professors={professors} setProfessors={setProfessors} />                
+                <SubjectArea subjects={subjects}/>                
                 {professors.length === 0 ? "" :
                 <>
                 <ProfessorArea professors={professors} chosenProfs={chosenProfs} setChosenProfs={setChosenProfs}/>

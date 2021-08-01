@@ -9,7 +9,7 @@ import EighthPeriod from "./periods/EighthPeriod";
 import NinthPeriod from "./periods/NinthPeriod";
 import TenthPeriod from "./periods/SeventhPeriod";
 
-export default function SubjectArea({subjects, professors, setProfessors}) {
+export default function SubjectArea({subjects}) {
 
     const firstPeriod = subjects.filter(subject => subject.subjects.semester === 1);
     const secondPeriod = subjects.filter(subject => subject.subjects.semester === 2);
@@ -27,43 +27,43 @@ export default function SubjectArea({subjects, professors, setProfessors}) {
         <h1>Qual a matéria?</h1>
         {
             firstPeriod.length === 0 ? "" :
-            <FirstPeriod firstPeriod={firstPeriod}  professors={professors} setProfessors={setProfessors}/> 
+            <FirstPeriod firstPeriod={firstPeriod} /> 
         }
         {
             secondPeriod.length === 0 ? "" :
-            <SecondPeriod secondPeriod={secondPeriod}  professors={professors} setProfessors={setProfessors}/>
+            <SecondPeriod secondPeriod={secondPeriod} />
         }
         {
             thirdPeriod.length === 0 ? "" :
-            <ThirdPeriod thirdPeriod={thirdPeriod}  professors={professors} setProfessors={setProfessors}/>
+            <ThirdPeriod thirdPeriod={thirdPeriod} />
         }
         {
             fourthPeriod.length === 0 ? "" :
-            <FourthPeriod fourthPeriod={fourthPeriod}  professors={professors} setProfessors={setProfessors}/>
+            <FourthPeriod fourthPeriod={fourthPeriod} />
         }
         {
             fifthPeriod.length === 0 ? "" :
-            <FifthPeriod fifthPeriod={fifthPeriod}  professors={professors} setProfessors={setProfessors}/>
+            <FifthPeriod fifthPeriod={fifthPeriod} />
         }
         {
             sixthPeriod.length === 0 ? "" :
-            <SixthPeriod sixthPeriod={sixthPeriod}  professors={professors} setProfessors={setProfessors}/>
+            <SixthPeriod sixthPeriod={sixthPeriod} />
         }
         {
             seventhPeriod.length === 0 ? "" :
-            <SeventhPeriod seventhPeriod={seventhPeriod}  professors={professors} setProfessors={setProfessors}/>
+            <SeventhPeriod seventhPeriod={seventhPeriod} />
         }
         {
             eighthPeriod.length === 0 ? "" :
-            <EighthPeriod eighthPeriod={eighthPeriod}  professors={professors} setProfessors={setProfessors}/>
+            <EighthPeriod eighthPeriod={eighthPeriod} />
         }
         {
             ninthPeriod.length === 0 ? "" :
-            <NinthPeriod ninthPeriod={ninthPeriod}  professors={professors} setProfessors={setProfessors}/>
+            <NinthPeriod ninthPeriod={ninthPeriod} />
         }
         {
             tenthPeriod.length === 0 ? "" :
-            <TenthPeriod tenthPeriod={tenthPeriod}  professors={professors} setProfessors={setProfessors}/>
+            <TenthPeriod tenthPeriod={tenthPeriod} />
         }
         </>
     )

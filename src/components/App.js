@@ -8,10 +8,16 @@ import SendTest from './internPages/SendTest';
 import SearchCourse from './internPages/SearchCourse';
 import Header from './general/Header';
 import ChooseCourse from './internPages/ChooseCourse';
+import ProfessorContext from '../contexts/ProfessorsContext';
+import { useState } from 'react';
 
 function App() {
+
+  const [professors, setProfessors] = useState([]);
+
   return (
     <BrowserRouter>
+      <ProfessorContext.Provider value={{professors, setProfessors}}>
       <Grommet theme={grommet}>
       <Header />
         <Switch>
@@ -33,6 +39,7 @@ function App() {
 
         </Switch>
       </Grommet>
+      </ProfessorContext.Provider>
     </BrowserRouter>
   );
 }
