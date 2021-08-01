@@ -2,8 +2,7 @@ import { Area } from "../../styles/GlobalStyles";
 import Professor from "./Professor";
 import { useState } from "react";
 
-export default function ProfessorArea({professors}) {
-    const [array, setArray] = useState([])
+export default function ProfessorArea({professors, chosenProfs, setChosenProfs}) {
 
     return(
         <>
@@ -11,7 +10,7 @@ export default function ProfessorArea({professors}) {
         <Area>
         {
             professors.map(professor => 
-                <Professor key={professor.id} array={array} setArray={setArray} professor={professor} />)
+                <Professor key={professor.id} chosenProfs={chosenProfs} setChosenProfs={setChosenProfs} professor={professor} />)
         }        
         </Area>
         </>

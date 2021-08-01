@@ -1,24 +1,23 @@
 import styled from "styled-components"
 import { useState } from "react";
 
-export default function Professor({professor, array, setArray}) {
+export default function Professor({professor, chosenProfs, setChosenProfs}) {
     const [chosen, setChosen] = useState(false)
     
     const {id, Name} = professor.professors;
 
     function chooseProfessor() {
         if(chosen) {
-            setArray([])
+            setChosenProfs(undefined)
             setChosen(false)
             return;
         }
 
-        if(array.length !== 0) {
+        if(chosenProfs) {
             alert("Um professor por vez")
             return;
         }
-        const newArray = array.push(professor);
-        setArray(newArray);
+        setChosenProfs(id);
         setChosen(true)
     }
  
