@@ -28,9 +28,14 @@ export default function SendTest() {
         request.then(res => {
             setSubjects(res.data);
         })
+
+        request.catch(() => {
+            alert("Curso não encontrado :(");
+            history.push('/');
+        })
     }
 
-    useEffect(chooseCourse, [params, id, subjects]);
+    useEffect(chooseCourse, []);
 
     function sendTest() {
         let semesterOfYear = '';
