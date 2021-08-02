@@ -17,8 +17,10 @@ export default function SendTest() {
     const [link, setLink] = useState('');
     const [chosenProfs, setChosenProfs] = useState(undefined)
     const [category, setCategory] = useState('');
+    const [year, setYear] = useState('');
+    const [semesterYear, setSemeterYear] = useState('');
 
-    const {professors, setProfessors} = useContext(ProfessorContext)
+    const {professors} = useContext(ProfessorContext)
 
     function chooseCourse() {
         const body = {id}
@@ -28,15 +30,27 @@ export default function SendTest() {
         })
     }
 
-    useEffect(chooseCourse, [params]);
+    useEffect(chooseCourse, [params, id, subjects]);
 
     function sendTest() {
+        let semesterOfYear = '';
+
+        if(semesterYear === "Primeiro Semestre") {
+            semesterOfYear = 1;
+        } else if(semesterYear === 'Segundo Semestre') {
+            semesterOfYear = 2;
+        } else {
+            return alert("Favor preencher o semestre do ano da prova!");
+        }
+
         const body = {
             courseId: parseInt(id),
             subjectId: professors[0].subjectsId,
             professorId: chosenProfs,
             category,
-            pdfLink: link
+            pdfLink: link,
+            year: parseInt(year),
+            yearSemester: semesterOfYear
         }
         const request = axios.post(`${process.env.REACT_APP_API_BASE_URL}/sendTest`, body);
         request.then(() => {
@@ -51,7 +65,7 @@ export default function SendTest() {
                 <SubjectArea subjects={subjects}/>                
                 {professors.length === 0 ? "" :
                 <>
-                <ProfessorArea professors={professors} chosenProfs={chosenProfs} setChosenProfs={setChosenProfs}/>
+                <ProfessorArea chosenProfs={chosenProfs} setChosenProfs={setChosenProfs}/>
                 </>
                 }
                 <RadioButton
@@ -61,13 +75,29 @@ export default function SendTest() {
                     onChange={(event) => setCategory(event.target.value)}
                 />
 
-
                 <Input
                     disabled={!chosenProfs}
                     placeholder="Coloque aqui o link do teste, por favor"
                     type="url"
                     value={link}
                     onChange={e => setLink(e.target.value)}
+                />
+                
+                <h1 disabled={!chosenProfs}>Ano que a prova foi aplicada</h1>
+                <Input
+                    disabled={!chosenProfs}
+                    placeholder="Qual o ano da prova?"
+                    type="number"
+                    value={year}
+                    onChange={e => setYear(e.target.value)}
+                />
+
+                <h1 disabled={!chosenProfs}>Semestre?</h1>
+                <RadioButton disabled={!chosenProfs}
+                    name="doc2"
+                    options={['Primeiro Semestre', 'Segundo Semestre']}
+                    category={semesterYear}
+                    onChange={(event) => setSemeterYear(event.target.value)}
                 />
 
                 <SendButton disabled={!chosenProfs} type="submit">Envie o teste!</SendButton>
@@ -79,6 +109,7 @@ export default function SendTest() {
 const SendForm = styled(Form)`
     width: 70%;
     margin: 50px auto;
+
 `
 
 const Input = styled.input`

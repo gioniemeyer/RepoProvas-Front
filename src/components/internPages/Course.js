@@ -6,7 +6,7 @@ export default function Course({course}) {
 
     const {id, Name} = course;  
     function chooseCourse(id) {
-            history.push(`/enviar-teste/${id}`)
+            history.push(`/${id}`)
     }
 
     return(
