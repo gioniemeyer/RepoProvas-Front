@@ -12,6 +12,7 @@ import HomeCourse from './homepage/HomeCourse';
 import SubjectsPage from './internPages/searchPages/SubjectsPage';
 import ProfessorsPage from './internPages/searchPages/ProfessorsPage';
 import TestById from './internPages/searchPages/TestById';
+import TestBySubjId from './internPages/searchPages/TestBySubjId';
 
 function App() {
 
@@ -49,6 +50,10 @@ function App() {
 
           <Route path="/testes/professor/:id" exact>
             <TestById />
+          </Route>
+
+          <Route path="/testes/materia/:id" exact>
+            <TestBySubjId />
           </Route>
 
         </Switch>

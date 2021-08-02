@@ -1,22 +1,19 @@
-import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components"
-import ProfessorContext from "../../../contexts/ProfessorsContext";
 import {Area} from "../../../styles/GlobalStyles"
 
-export default function ProfessorSearch() {
+export default function SubjectSearch({subjects}) {
     let history = useHistory();
 
-    const {professors} = useContext(ProfessorContext);
-    
+
     return(
         <>
-        <h1>Escolha o professor</h1>
+        <h1>Escolha a matéria</h1>
         <Area>
         {
-            professors.map(professor => 
-                <Button type="button" onClick={() => history.push(`/testes/materia/${professor.id}`)}>
-                    <strong>{professor.Name}</strong>
+            subjects.map(subject => 
+                <Button type="button" onClick={() => history.push(`/testes/materia/${subject.id}`)}>
+                    <strong>{subject.Name}</strong>
                 </Button>
             )
         }        

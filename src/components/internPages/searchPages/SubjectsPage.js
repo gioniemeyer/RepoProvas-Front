@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import {Container, Button} from "../../../styles/GlobalStyles"
-import SubjectArea from "../SubjectArea";
+import SubjectSearch from "./SubjectSearch";
 
 export default function SubjectsPage() {
     let params = useParams();
@@ -15,11 +15,13 @@ export default function SubjectsPage() {
         const body = {id}
         const request = axios.post(`${process.env.REACT_APP_API_BASE_URL}/filter-subjects`, body)
         request.then(res => {
-            setSubjects(res.data);
+            const response = res.data
+            const newSubjects = response.map(subject => subject.subjects)
+            setSubjects(newSubjects);
         })
     }
 
-    useEffect(findSubjects,[params]);
+    useEffect(findSubjects,[params, id, subjects, setSubjects]);
 
     return (
         <Container>
@@ -30,8 +32,7 @@ export default function SubjectsPage() {
             <Button type="button" onClick={() => history.push(`/pesquisar-teste/${id}/professores`)}>
                 <strong>Por Professores</strong>
             </Button>
-
-            <SubjectArea subjects={subjects}/>
+            <SubjectSearch subjects={subjects} />
         </Container>
     )
 
